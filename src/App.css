@@ -1,3 +1,6 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap');
+
+/* Search Results Tiles */
 .result-tile {
   display: inline-flex;
   position: relative;
@@ -8,6 +11,7 @@
   width: 275px;
   margin: 10px;
   display: block;
+  transition: 0.5s ease;
 }
 
 .tile-overlay {
@@ -16,13 +20,101 @@
   bottom: 0;
   left: 0;
   right: 0;
-  height: 100%;
-  width: 100%;
+  height: 360px;
+  width: 275px;
   margin: 10px;
   opacity: 0;
   transition: 0.5s ease;
+  background-color: rgba(0, 0, 0, 0.6);
+  color: #fff;
+  font-family: 'Roboto', sans-serif;
 }
 
 .result-tile:hover .tile-overlay {
   opacity: 1;
+  transform: scale(1.2);
+  z-index: 100;
+}
+
+.result-tile:hover .img-tile {
+  transform: scale(1.2);
+  z-index: 100;
+}
+
+.movie-name {
+  margin-left: 20px;
+}
+
+.genre {
+  margin-left: 20px;
+  background-color: salmon;
+  width: fit-content;
+  padding: 2px 10px;
+  border-radius: 5px;
+  display: inline;
+  margin-right: 10px;
+}
+
+.Short,
+.Musical,
+.Music,
+.Family {
+  background-color: skyblue;
+}
+.Mystery,
+.Adventure,
+.History,
+.War {
+  background-color: coral;
+}
+.Thriller,
+.Documentary,
+.Biography {
+  background-color: darkmagenta;
+}
+.Horror,
+.Sci-Fi,
+.Animation,
+.Crime {
+  background-color: dimgrey;
+}
+.Action,
+.\\N,
+.Fantasy,
+.Sport {
+  background-color: dodgerblue;
+}
+.Drama {
+  background-color: firebrick;
+}
+.Romance {
+  background-color: hotpink;
+}
+.Comedy {
+  background-color: darkslateblue;
+}
+
+.cast {
+  margin-left: 20px;
+}
+
+.links {
+  margin-left: 20px;
+}
+
+.link.imdb {
+  font-size: 36px;
+  color: gold;
+  margin-right: 20px;
+}
+
+.link.wiki {
+  font-size: 36px;
+  color: #fff;
+}
+
+.summary {
+  margin-left: 20px;
+  margin-right: 20px;
+  font-size: 15px;
 }
