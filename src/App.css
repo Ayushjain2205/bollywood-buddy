@@ -1,0 +1,28 @@
+.result-tile {
+  display: inline-flex;
+  position: relative;
+}
+
+.img-tile {
+  height: 360px;
+  width: 275px;
+  margin: 10px;
+  display: block;
+}
+
+.tile-overlay {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 100%;
+  width: 100%;
+  margin: 10px;
+  opacity: 0;
+  transition: 0.5s ease;
+}
+
+.result-tile:hover .tile-overlay {
+  opacity: 1;
+}

@@ -1,7 +1,5 @@
-  import React from "react";
-
-import AppSearchAPIConnector from "@elastic/search-ui-app-search-connector";
-
+import React from 'react'
+import AppSearchAPIConnector from '@elastic/search-ui-app-search-connector'
 import {
   ErrorBoundary,
   Facet,
@@ -12,36 +10,46 @@ import {
   ResultsPerPage,
   Paging,
   Sorting,
-  WithSearch
-} from "@elastic/react-search-ui";
-import { Layout } from "@elastic/react-search-ui-views";
-import "@elastic/react-search-ui-views/lib/styles/styles.css";
-
+  WithSearch,
+} from '@elastic/react-search-ui'
+import { Layout } from '@elastic/react-search-ui-views'
+import '@elastic/react-search-ui-views/lib/styles/styles.css'
+import './App.css'
 import {
   buildAutocompleteQueryConfig,
   buildFacetConfigFromConfig,
   buildSearchOptionsFromConfig,
   buildSortOptionsFromConfig,
   getConfig,
-  getFacetFields
-} from "./config/config-helper";
+  getFacetFields,
+} from './config/config-helper'
 
-const { hostIdentifier, searchKey, endpointBase, engineName } = getConfig();
+const { hostIdentifier, searchKey, endpointBase, engineName } = getConfig()
 const connector = new AppSearchAPIConnector({
   searchKey,
   engineName,
   hostIdentifier,
-  endpointBase
-});
+  endpointBase,
+})
 const config = {
   searchQuery: {
     facets: buildFacetConfigFromConfig(),
-    ...buildSearchOptionsFromConfig()
+    ...buildSearchOptionsFromConfig(),
   },
   autocompleteQuery: buildAutocompleteQueryConfig(),
   apiConnector: connector,
-  alwaysSearchOnInitialLoad: true
-};
+  alwaysSearchOnInitialLoad: true,
+}
+
+const ResultTile = ({ titleField, result }) => (
+  <div className="result-tile">
+    {/* <h1>{result.title.raw}</h1> */}
+    <img className="img-tile" src={result.poster.raw} alt="" />
+    <div className="tile-overlay">
+      <div className="text">{result.title.raw}</div>
+    </div>
+  </div>
+)
 
 export default function App() {
   return (
@@ -57,11 +65,11 @@ export default function App() {
                     <div>
                       {wasSearched && (
                         <Sorting
-                          label={"Sort by"}
+                          label={'Sort by'}
                           sortOptions={buildSortOptionsFromConfig()}
                         />
                       )}
-                      {getFacetFields().map(field => (
+                      {getFacetFields().map((field) => (
                         <Facet key={field} field={field} label={field} />
                       ))}
                     </div>
@@ -71,6 +79,7 @@ export default function App() {
                       titleField={getConfig().titleField}
                       urlField={getConfig().urlField}
                       shouldTrackClickThrough={true}
+                      resultView={ResultTile}
                     />
                   }
                   bodyHeader={
@@ -83,9 +92,9 @@ export default function App() {
                 />
               </ErrorBoundary>
             </div>
-          );
+          )
         }}
       </WithSearch>
     </SearchProvider>
-  );
+  )
 }
