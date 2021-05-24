@@ -24,6 +24,8 @@ import {
   getFacetFields,
 } from './config/config-helper'
 
+import HeaderLogo from './Components/HeaderLogo'
+
 const { hostIdentifier, searchKey, endpointBase, engineName } = getConfig()
 const connector = new AppSearchAPIConnector({
   searchKey,
@@ -77,16 +79,6 @@ const ResultTile = ({ result }) => (
     </div>
   </div>
 )
-
-const HeaderLogo = () => {
-  return (
-    <div className="header-logo">
-      <h1>
-        <i class="fas fa-film"></i> Bollywood Buddy
-      </h1>
-    </div>
-  )
-}
 
 export default function App() {
   return (
