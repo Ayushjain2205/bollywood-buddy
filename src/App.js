@@ -58,12 +58,13 @@ const ResultTile = ({ result }) => (
         </h5>
         <div className="links">
           <a
+            target="blank"
             className="link imdb"
             href={`https://www.imdb.com/title/${result.imdb_id.raw}`}
           >
             <i class="fab fa-imdb"></i>
           </a>
-          <a className="link wiki" href={result.wiki_link.raw}>
+          <a target="blank" className="link wiki" href={result.wiki_link.raw}>
             <i class="fab fa-wikipedia-w"></i>
           </a>
         </div>
@@ -77,50 +78,70 @@ const ResultTile = ({ result }) => (
   </div>
 )
 
+const HeaderLogo = () => {
+  return (
+    <div className="header-logo">
+      <h1>
+        <i class="fas fa-film"></i> Bollywood Buddy
+      </h1>
+    </div>
+  )
+}
+
 export default function App() {
   return (
-    <SearchProvider config={config}>
-      <WithSearch mapContextToProps={({ wasSearched }) => ({ wasSearched })}>
-        {({ wasSearched }) => {
-          return (
-            <div className="App">
-              <ErrorBoundary>
-                <Layout
-                  header={<SearchBox autocompleteSuggestions={true} />}
-                  sideContent={
-                    <div>
-                      {wasSearched && (
-                        <Sorting
-                          label={'Sort by'}
-                          sortOptions={buildSortOptionsFromConfig()}
+    <div>
+      <SearchProvider config={config}>
+        <WithSearch mapContextToProps={({ wasSearched }) => ({ wasSearched })}>
+          {({ wasSearched }) => {
+            return (
+              <div className="App">
+                <ErrorBoundary>
+                  <Layout
+                    header={
+                      <div className="header-div">
+                        <HeaderLogo />
+                        <SearchBox
+                          inputProps={{ placeholder: 'Search movies ...' }}
+                          autocompleteSuggestions={true}
                         />
-                      )}
-                      {getFacetFields().map((field) => (
-                        <Facet key={field} field={field} label={field} />
-                      ))}
-                    </div>
-                  }
-                  bodyContent={
-                    <Results
-                      titleField={getConfig().titleField}
-                      urlField={getConfig().urlField}
-                      shouldTrackClickThrough={true}
-                      resultView={ResultTile}
-                    />
-                  }
-                  bodyHeader={
-                    <React.Fragment>
-                      {wasSearched && <PagingInfo />}
-                      {wasSearched && <ResultsPerPage />}
-                    </React.Fragment>
-                  }
-                  bodyFooter={<Paging />}
-                />
-              </ErrorBoundary>
-            </div>
-          )
-        }}
-      </WithSearch>
-    </SearchProvider>
+                      </div>
+                    }
+                    sideContent={
+                      <div>
+                        {wasSearched && (
+                          <Sorting
+                            label={'Sort by'}
+                            sortOptions={buildSortOptionsFromConfig()}
+                          />
+                        )}
+                        {getFacetFields().map((field) => (
+                          <Facet key={field} field={field} label={field} />
+                        ))}
+                      </div>
+                    }
+                    bodyContent={
+                      <Results
+                        titleField={getConfig().titleField}
+                        urlField={getConfig().urlField}
+                        shouldTrackClickThrough={true}
+                        resultView={ResultTile}
+                      />
+                    }
+                    bodyHeader={
+                      <React.Fragment>
+                        {wasSearched && <PagingInfo />}
+                        {wasSearched && <ResultsPerPage />}
+                      </React.Fragment>
+                    }
+                    bodyFooter={<Paging />}
+                  />
+                </ErrorBoundary>
+              </div>
+            )
+          }}
+        </WithSearch>
+      </SearchProvider>
+    </div>
   )
 }

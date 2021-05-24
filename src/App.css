@@ -1,4 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
+
+body {
+  margin: 0px !important;
+}
 
 /* Search Results Tiles */
 .result-tile {
@@ -117,4 +122,71 @@
   margin-left: 20px;
   margin-right: 20px;
   font-size: 15px;
+}
+
+/* Header styles */
+
+.header-logo {
+  margin-left: 20px;
+  font-family: 'Pacifico', cursive;
+  color: #0f1626;
+}
+
+.fas.fa-film {
+  font-size: 54px;
+}
+
+.sui-layout-header {
+  padding: 0px 24px 0px;
+  border-bottom: 1px solid #eeeeee;
+  background: #ff533d;
+}
+
+input.button.sui-search-box__submit {
+  background: #0f1626 !important;
+  font-weight: bold;
+  letter-spacing: 1px;
+  width: 80px;
+}
+
+input.button.sui-search-box__submit:hover {
+  letter-spacing: 2px;
+  transform: scale(1.1);
+}
+
+/* Facet and layout styles */
+
+.sui-facet__title {
+  font-weight: bold;
+  font-size: 16px;
+}
+
+.sui-multi-checkbox-facet {
+  font-size: 15px;
+}
+
+.sui-sorting__label {
+  font-size: 13px;
+}
+
+.sui-results-per-page__label {
+  font-size: 14px;
+}
+
+.sui-layout-body {
+  background: #f5f5f5;
+}
+
+.sui-layout-header__inner {
+  margin: auto;
+}
+
+.header-div {
+  display: inline-flex;
+}
+
+.sui-search-box {
+  margin-top: 30px;
+  margin-left: 100px;
+  width: 700px;
 }
