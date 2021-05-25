@@ -132,6 +132,11 @@ body {
   color: #0f1626;
 }
 
+.header-logo a {
+  text-decoration: none;
+  color: #0f1626;
+}
+
 .fas.fa-film {
   font-size: 54px;
 }
