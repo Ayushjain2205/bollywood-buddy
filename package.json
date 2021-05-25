@@ -6,6 +6,7 @@
   "dependencies": {
     "@elastic/react-search-ui": "1.4.1",
     "@elastic/search-ui-app-search-connector": "1.4.1",
+    "chokidar": "^3.5.1",
     "prop-types": "^15.6.2",
     "react": "^16.8.1",
     "react-dom": "^16.8.1",
